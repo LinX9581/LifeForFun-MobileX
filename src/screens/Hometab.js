@@ -12,7 +12,7 @@ class HomeScreen extends React.Component {
     return (
       <Container>
         <Content>
-          <Text> This is HomeTab </Text>
+          <Text> This is HomeTab! !</Text>
         </Content>
       </Container>
     );
