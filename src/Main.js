@@ -22,18 +22,23 @@ class Mains extends React.Component {
   }
 }
 
-const HometabStack = createStackNavigator({
+const HomeStack = createStackNavigator({
   Settings: {
     screen: Hometab,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: 'Hometab !',
+        headerTitle: "Hometab !",
         headerLeft: (
-          <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+          <Icon
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
         ),
         tabBarIcon: ({ tintColor }) => {
           return <Icon name="md-home" style={{ color: tintColor }} />;
-        },
+        }
       };
     }
   }
@@ -44,13 +49,18 @@ const CameraStack = createStackNavigator({
     screen: Camera,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: 'Camera',
+        headerTitle: "Camera",
         headerLeft: (
-          <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+          <Icon
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
         ),
         tabBarIcon: ({ tintColor }) => {
           return <Icon name="md-home" style={{ color: tintColor }} />;
-        },
+        }
       };
     }
   }
@@ -61,10 +71,15 @@ const PersonStack = createStackNavigator({
     screen: Person,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: 'Person',
+        headerTitle: "Person",
         headerLeft: (
-          <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
-        ), 
+          <Icon
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        ),
         tabBarIcon: ({ tintColor }) => {
           return <Icon name="person" style={{ color: tintColor }} />;
         }
@@ -78,42 +93,79 @@ const RankStack = createStackNavigator({
     screen: Rank,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: 'Rank',
+        headerTitle: "Rank",
         headerLeft: (
-          <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
+          <Icon
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
         ),
         tabBarIcon: ({ tintColor }) => {
           return <Icon name="person" style={{ color: tintColor }} />;
-        }    
+        }
       };
     }
   }
 });
 
-const PlanetStack = createStackNavigator({
+const PlanetStack = createBottomTabNavigator({
   Planet: {
     screen: Planet,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerTitle: 'Planet',
-        headerLeft: (
-          <Icon style={{ paddingLeft: 10 }} onPress={() => navigation.openDrawer()} name="md-menu" size={30} />
-        ),
-        tabBarIcon: ({ tintColor }) => {
-          return <Icon name="person" style={{ color: tintColor }} />;
-        }    
-      };
+    navigationOptions: {
+      tabBarIcon: ({ focused, tintColor }) => {
+        const iconName = `ios-information-circle${focused ? "" : "-outline"}`;
+        return <Icon name="person" style={{ color: tintColor }} />;
+      }
     }
   }
 });
 
-const MainTabNavigator = createBottomTabNavigator({
-  HometabStack,
-  CameraStack,
-  PersonStack,
-  RankStack,
-  PlanetStack,
-}, {
+const MainTabNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: HomeStack,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Icon name="md-home" style={{ color: tintColor }} />;
+        }
+      }
+    },
+    Rank: {
+      screen: RankStack,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Icon name="trophy" style={{ color: tintColor }} />;
+        }
+      }
+    },
+    Person: {
+      screen: PersonStack,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Icon name="person" style={{ color: tintColor }} />;
+        }
+      }
+    },
+    Planet: {
+      screen: PlanetStack,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Icon name="planet" style={{ color: tintColor }} />;
+        }
+      }
+    },
+    Camera: {
+      screen: CameraStack,
+      navigationOptions: {
+        tabBarIcon: ({ focused, tintColor }) => {
+          return <Icon name="md-camera" style={{ color: tintColor }} />;
+        }
+      }
+    },
+  },
+  {
     navigationOptions: ({ navigation }) => {
       const { routeName } = navigation.state.routes[navigation.state.index];
       return {
@@ -126,7 +178,7 @@ const MainTabNavigator = createBottomTabNavigator({
 
 const MainStackNavigator = createStackNavigator(
   {
-    MainTabNavigator: MainTabNavigator,
+    MainTabNavigator: MainTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
