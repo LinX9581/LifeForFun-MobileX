@@ -16,8 +16,23 @@ import Planet from "./screens/Planet";
 import Person from "./screens/Person";
 // import Menu from "./scr";
 
+import { Loader } from "./component/Loader";
+import { test } from "./component/test";
+import { AppLoading } from "expo";
+
 class Mains extends React.Component {
+  // state = {
+  //   loaded: false
+  // };
+  // constructor() {
+  //   super();
+  //   test.load(v => this.setState({ loaded: true }));
+  // }
   render() {
+    // return this.state.loaded ? <MainTabNavigator /> : <Text>loading...</Text>;
+    if (!this.state.isReady) {
+      return <AppLoading />;
+    }
     return <MainTabNavigator />;
   }
 }
@@ -35,10 +50,7 @@ const HomeStack = createStackNavigator({
             name="md-menu"
             size={30}
           />
-        ),
-        tabBarIcon: ({ tintColor }) => {
-          return <Icon name="md-home" style={{ color: tintColor }} />;
-        }
+        )
       };
     }
   }
@@ -57,10 +69,7 @@ const CameraStack = createStackNavigator({
             name="md-menu"
             size={30}
           />
-        ),
-        tabBarIcon: ({ tintColor }) => {
-          return <Icon name="md-home" style={{ color: tintColor }} />;
-        }
+        )
       };
     }
   }
@@ -79,10 +88,7 @@ const PersonStack = createStackNavigator({
             name="md-menu"
             size={30}
           />
-        ),
-        tabBarIcon: ({ tintColor }) => {
-          return <Icon name="person" style={{ color: tintColor }} />;
-        }
+        )
       };
     }
   }
@@ -101,23 +107,27 @@ const RankStack = createStackNavigator({
             name="md-menu"
             size={30}
           />
-        ),
-        tabBarIcon: ({ tintColor }) => {
-          return <Icon name="person" style={{ color: tintColor }} />;
-        }
+        )
       };
     }
   }
 });
 
-const PlanetStack = createBottomTabNavigator({
-  Planet: {
+const PlanetStack = createStackNavigator({
+  Rank: {
     screen: Planet,
-    navigationOptions: {
-      tabBarIcon: ({ focused, tintColor }) => {
-        const iconName = `ios-information-circle${focused ? "" : "-outline"}`;
-        return <Icon name="person" style={{ color: tintColor }} />;
-      }
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerTitle: "Planet",
+        headerLeft: (
+          <Icon
+            style={{ paddingLeft: 10 }}
+            onPress={() => navigation.openDrawer()}
+            name="md-menu"
+            size={30}
+          />
+        )
+      };
     }
   }
 });
@@ -163,7 +173,7 @@ const MainTabNavigator = createBottomTabNavigator(
           return <Icon name="md-camera" style={{ color: tintColor }} />;
         }
       }
-    },
+    }
   },
   {
     navigationOptions: ({ navigation }) => {
@@ -204,4 +214,3 @@ const AppDrawerNavigator = createDrawerNavigator({
 
 const Main = createAppContainer(AppDrawerNavigator);
 export default Main;
-//export default createAppContainer(MainTabNavigator);
