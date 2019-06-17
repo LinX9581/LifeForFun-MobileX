@@ -38,7 +38,7 @@ class Mains extends React.Component {
 }
 
 const HomeStack = createStackNavigator({
-  Settings: {
+  Hometab: {
     screen: Hometab,
     navigationOptions: ({ navigation }) => {
       return {
@@ -76,11 +76,11 @@ const CameraStack = createStackNavigator({
 });
 
 const PersonStack = createStackNavigator({
-  Person: {
+  Profile: {
     screen: Person,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: "Person",
+        headerTitle: "Profile",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10 }}
@@ -95,11 +95,11 @@ const PersonStack = createStackNavigator({
 });
 
 const RankStack = createStackNavigator({
-  Rank: {
+  Chat: {
     screen: Rank,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: "Rank",
+        headerTitle: "Chat",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10 }}
@@ -114,11 +114,11 @@ const RankStack = createStackNavigator({
 });
 
 const PlanetStack = createStackNavigator({
-  Rank: {
+  Chat: {
     screen: Planet,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: "Planet",
+        headerTitle: "Chat",
         headerLeft: (
           <Icon
             style={{ paddingLeft: 10 }}
@@ -142,15 +142,15 @@ const MainTabNavigator = createBottomTabNavigator(
         }
       }
     },
-    Rank: {
+    Chat: {
       screen: RankStack,
       navigationOptions: {
         tabBarIcon: ({ focused, tintColor }) => {
-          return <Icon name="trophy" style={{ color: tintColor }} />;
+          return <Icon name="md-chatboxes" style={{ color: tintColor }} />;
         }
       }
     },
-    Person: {
+    Profile: {
       screen: PersonStack,
       navigationOptions: {
         tabBarIcon: ({ focused, tintColor }) => {
@@ -158,7 +158,7 @@ const MainTabNavigator = createBottomTabNavigator(
         }
       }
     },
-    Planet: {
+    Achievement: {
       screen: PlanetStack,
       navigationOptions: {
         tabBarIcon: ({ focused, tintColor }) => {

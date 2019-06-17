@@ -8,17 +8,22 @@ import { View, Image, TouchableOpacity, StatusBar } from "react-native";
 import { Theme, NavigationPage, AlbumView, Overlay, Button } from "teaset";
 
 export default class HomeScreen extends NavigationPage {
+
+  static navigationOptions = {
+    tabBarVisible: false, 
+    header:null, 
+  };
   constructor(props) {
     super(props);
     this.images = [
-      require("../images/teaset1.jpg"),
-      require("../images/teaset2.jpg"),
+      require("../images/2.png"),
+      require("../images/3.jpg"),
       require("../images/teaset3.jpg"),
       require("../images/faircup.jpg")
     ];
     this.thumbs = [
-      require("../images/teaset1_s.jpg"),
-      require("../images/teaset2_s.jpg"),
+      require("../images/2s.png"),
+      require("../images/3s.jpg"),
       require("../images/teaset3_s.jpg"),
       require("../images/faircup_s.jpg")
     ];
@@ -63,7 +68,7 @@ export default class HomeScreen extends NavigationPage {
           }}
         >
           {this.thumbs.map((item, index) => (
-            <View style={{ width: 300, height: 300, padding: 10 }} key={index}>
+            <View style={{ width: 100, height: 100, padding: 10 }} key={index}>
               <TouchableOpacity
                 style={{ flex: 1 }}
                 ref={"it" + index}
