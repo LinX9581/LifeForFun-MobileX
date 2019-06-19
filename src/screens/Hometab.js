@@ -8,6 +8,11 @@ import { View, Image, TouchableOpacity, StatusBar } from "react-native";
 import { Theme, NavigationPage, AlbumView, Overlay, Button } from "teaset";
 
 export default class HomeScreen extends NavigationPage {
+  static defaultProps = {
+    ...NavigationPage.defaultProps,
+    title: '概念圖',
+    // showBackButton: true,
+  };
 
   static navigationOptions = {
     tabBarVisible: false, 
@@ -18,14 +23,14 @@ export default class HomeScreen extends NavigationPage {
     this.images = [
       require("../images/2.png"),
       require("../images/3.jpg"),
-      require("../images/teaset3.jpg"),
-      require("../images/faircup.jpg")
+      require("../images/4.jpg"),
+      require("../images/5.jpg")
     ];
     this.thumbs = [
       require("../images/2s.png"),
       require("../images/3s.jpg"),
-      require("../images/teaset3_s.jpg"),
-      require("../images/faircup_s.jpg")
+      require("../images/4s.jpg"),
+      require("../images/5s.jpg")
     ];
   }
 
