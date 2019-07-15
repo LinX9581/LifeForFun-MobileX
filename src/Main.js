@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+
 import {
   createBottomTabNavigator,
   createAppContainer,
@@ -9,11 +9,11 @@ import {
 import { Header, Text, Content, Icon, Container } from "native-base";
 
 //components
-import Hometab from "./screens/Hometab";
-import Camera from "./screens/Camera";
-import Rank from "./screens/Rank";
-import Planet from "./screens/Planet";
-import Person from "./screens/Person";
+import Hometab from "./TabNavigation/Hometab";
+import Camera from "./TabNavigation/Camera";
+import Chat from "./TabNavigation/Chat";
+import Planet from "./TabNavigation/Planet";
+import Person from "./TabNavigation/Person";
 // import Menu from "./scr";
 
 import { Loader } from "./component/Loader";
@@ -94,9 +94,9 @@ const PersonStack = createStackNavigator({
   }
 });
 
-const RankStack = createStackNavigator({
+const ChatStack = createStackNavigator({
   Chat: {
-    screen: Rank,
+    screen: Chat,
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: "Chat",
@@ -143,7 +143,7 @@ const MainTabNavigator = createBottomTabNavigator(
       }
     },
     Chat: {
-      screen: RankStack,
+      screen: ChatStack,
       navigationOptions: {
         tabBarIcon: ({ focused, tintColor }) => {
           return <Icon name="md-chatboxes" style={{ color: tintColor }} />;
